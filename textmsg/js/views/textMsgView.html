@@ -1,0 +1,65 @@
+<div>
+
+<style type="text/css">
+	.messageTable {font-size:12px;color:#333333;width:80%;border-width: 1px;border-color: #729ea5;border-collapse: collapse;}
+	.messageTable th {font-size:12px;background-color:#acc8cc;border-width: 1px;padding: 8px;border-style: solid;
+	             border-color: #729ea5;text-align:left;}
+	.messageTable tr {background-color:#ffffff;}
+	.messageTable td {font-size:12px;border-width: 1px;padding: 8px;border-style: solid;border-color: #729ea5;}
+	.messageTable .name {font-size:12px;border-width: 1px;padding: 8px;border-style: solid;border-color: #729ea5;font-style: italic;font-weight:bold}
+	.messageTable .date {font-size:12px;border-width: 1px;padding: 8px;border-style: solid;border-color: #729ea5;font-style: italic}
+	.messageTable tr:hover {background-color:#ffff99;}
+</style>
+
+<!-- Login Section -->
+ <table border="0">
+	<tr>
+    	<td align="right"><label>Login: </label></td>
+    	<td align="left"><input title="Enter your name here" type="text" ng-model="msg.from" ></td>
+	</tr>
+	<tr>
+		<td/>
+		<td align="left"><button title="Login with your name" ng-click="getAllMessages(msg.from)">Login</button></td>
+	</tr>
+</table>
+<hr/>
+
+<!-- Input Section -->
+ <table border="0">
+	<tr>
+    	<td align="right"><label>To: </label></td>
+    	<td align="left"><input title="Recipient of your message" type="text" ng-model="msg.to" ></td>
+	</tr>
+	<tr>
+    	<td align="right"><label>Message: </label></td>
+    	<td align="left"><input title="Enter your message here and click the send button" type="text" size="100%" ng-model="msg.message" ></td>
+	</tr>
+	<tr>
+		<td width="5%"/>
+		<td>
+			<table border="0" width="100%">
+				<tr>
+					<td align="left"><button title="Send a message" ng-click="sendMessage(msg.from, msg.to, msg.message)">Send</button>
+					<td width="50%"/>
+					<td align="left"><button title="Delete your messages using login and to values" ng-click="deleteMessages(msg.from, msg.to)">Delete Messages</button></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+<hr/>
+		
+<!-- Message Display -->
+<table class="messageTable">
+	<tr>
+		<th width="8%">From</th><th width="8%">To</th><th width="18%">Date</th><th>Message</th>
+	</tr>
+   <tr ng-repeat="message in messages">
+        <td class="name" width="8%">{{message.from}}</td> 
+        <td class="name" width="8%">{{message.to}}</td> 
+        <td class="date" width="18%">{{message.date}}</td> 
+        <td>{{message.message}}</td> 
+    </tr>
+</table>
+
+</div>
