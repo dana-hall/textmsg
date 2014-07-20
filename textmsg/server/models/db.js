@@ -12,7 +12,7 @@ var Schema = mongoose.Schema;
 var Messages = new Schema({
 	from: {type: String, required: true},
 	to: {type: String, required: true},
-	date: {type: Date, required: true},
+	date: {type: Date, "default": Date.now},
 	message: {type: String, required: true}
 });
 

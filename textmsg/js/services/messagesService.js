@@ -28,12 +28,12 @@ textMsgApp.factory("messagesService", function($http) {
 
 	/**
 	 * Create a new message
+	 * NOTE: the date field is set in the schema with a default of current date
 	 */
     var _sendMessage = function(from, to, message) {
         var message = {
             "from": from,
             "to": to,
-            "date": new Date(),
             "message": message
         };
 

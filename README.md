@@ -75,3 +75,10 @@ Change Log
 2014-07-19 - added case insensitivity to queries and delete.  This applies to web interface and Postman.
 Modified server/models/messages.js
 
+2014-07-20 - modified schema to set the date field to default of current date.  Removed setting of date in messagesService.
+Modified
+ 	js/services/messagesService.js
+ 	server/models/db.js
+ 	server/models/messages.js
+ 	
+

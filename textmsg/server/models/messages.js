@@ -36,15 +36,6 @@ function CreateMessage(req, callback) {
 	instance.to	  = req.body.to;
 	instance.message = req.body.message;
 
-	// Accommodation for Postman rest client for testing 
-	// as we can't put a date in the field
-	if(req.body.date != null) {
-		instance.date = req.body.date;
-	}
-	else {
-		instance.date = Date.now();
-	}
-	
 	console.log(instance.toString());
 	
 	instance.save(function (err,doc) {
