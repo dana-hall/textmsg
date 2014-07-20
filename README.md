@@ -45,7 +45,7 @@ Design Decisions
 2) I did consider using JMS on the back end but this paradigm, I felt, did not meet the requirements of a text
    message product.  The JMS paradigm is more suited for something like chat.  In the JMS world messages are not
    stored but meant to be transient.  This is not what, I feel, is what is done in a text message environment.
-3) Use of a single document that is shared by all users.  This is really one of expediency and needed to fit 07
+3) Use of a single document that is shared by all users.  This is really one of expediency and needed to fit 
    within the scope of the requirements.
 
 Improvements
@@ -73,12 +73,18 @@ http://weblogs.asp.net/dwahlin/using-an-angularjs-factory-to-interact-with-a-res
 
 Change Log
 2014-07-19 - added case insensitivity to queries and delete.  This applies to web interface and Postman.
-Modified server/models/messages.js
+Modified 
+     server/models/messages.js
 
 2014-07-20 - modified schema to set the date field to default of current date.  Removed setting of date in messagesService.
 Modified
  	js/services/messagesService.js
  	server/models/db.js
  	server/models/messages.js
- 	
+
+2014-07-20 - modified messageServices to display the current date immediately.  Without this the date field is blank until a 
+    refresh occurs.
+Modified    
+    js/services/messagesService.js
+
 
