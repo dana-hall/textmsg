@@ -45,7 +45,7 @@ Design Decisions
 2) I did consider using JMS on the back end but this paradigm, I felt, did not meet the requirements of a text
    message product.  The JMS paradigm is more suited for something like chat.  In the JMS world messages are not
    stored but meant to be transient.  This is not what, I feel, is what is done in a text message environment.
-3) Use of a single document that is shared by all users.  This is really one of expediency and needed to fit 
+3) Use of a single document that is shared by all users.  This is really one of expediency and needed to fit 07
    within the scope of the requirements.
 
 Improvements
@@ -53,7 +53,8 @@ Improvements
     a) Create a separate document for each user so each message would be discreet.
    	b) Add authentication and add this to the record so unless this token was present the record would not 
    	   be deleted 
-2) Create to display tables, one for received messages and one for sent messages.
+2) Create two display tables, one for received messages and one for sent messages.  This would be fine for the 
+   web page but would not be a good interface for mobile.
 3) Allow grouping of messages by from and to.  Basically group the conversations together.
 
 References
@@ -69,3 +70,8 @@ http://bardevblog.wordpress.com/2013/08/14/understanding-angularjs-simple-exampl
 http://toddmotto.com/ultimate-guide-to-learning-angular-js-in-one-day/
 http://www.ng-newsletter.com/posts/beginner2expert-how_to_start.html
 http://weblogs.asp.net/dwahlin/using-an-angularjs-factory-to-interact-with-a-restful-service
+
+Change Log
+2014-07-19 - added case insensitivity to queries and delete.  This applies to web interface and Postman.
+Modified server/models/messages.js
+
