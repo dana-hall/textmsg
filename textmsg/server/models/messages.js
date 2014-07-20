@@ -56,30 +56,40 @@ function CreateMessage(req, callback) {
 /**
  * Retrieve all messages for a user.  The messages are sorted by 
  * date in descending order (newest first).
+ * Does case insensitive search by using regex.
+ * 
+ * NOTE: this is not efficient for large datasets as it does not 
+ * invoke any indexes.
  * 
  * @param user 
  * @param callback 
  */
 function RetrieveAllByUser(user, callback) {
+	var regexUser = new RegExp(user, "i");
 	modelMessage.find(
 			{
-				$or: [ { from: user }, { to: user } ]
+				$or: [ { from: regexUser}, { to: regexUser} ]
 			}).sort('-date').exec(callback);
+
 }
 
 /**
  * Delete all messages that match the from and to user.
+ * Does case insensitive search by using regex.
  * 
+ * NOTE: this is not efficient for large datasets as it does not 
+ * 
+ * invoke any indexes.
  * @param req
  * @param callback 
  */
 function DeleteMessages(req, callback) {
-	var fromUser = req.body.from;
-	var toUser   = req.body.to;
+	var regexFromUser = new RegExp(req.body.from, "i");
+	var regexToUser = new RegExp(req.body.to, "i");
 
 	modelMessage.remove( 
 	    {
-	    	$and: [ { from: fromUser }, { to: toUser } ]
+	    	$and: [ { from: regexFromUser }, { to: regexToUser } ]
 		}, function (err) {
 		if(err) callback(err);
 		else callback(null, {"status":"OK"});
@@ -104,26 +114,37 @@ function RetrieveAll(callback) {
 /**
  * Retrieve all messages from a user.  The messages are sorted by 
  * date in descending order (newest first).
+ * Does case insensitive search by using regex.
+ * 
+ * NOTE: this is not efficient for large datasets as it does not 
+ * invoke any indexes.
  * 
  * @param user 
  * @param callback 
  */
 function RetrieveAllFromUser(user, callback) {
-	modelMessage.find({from: user}).sort('-date').exec(callback);
+	var regexUser = new RegExp(user, "i");
+	modelMessage.find({from: regexUser}).sort('-date').exec(callback);
 }
 
 /**
  * Retrieve all messages where from equals the from User and 
  * to equals the toUser.  The messages are sorted by 
  * date in descending order (newest first).
+ * Does case insensitive search by using regex.
+ * 
+ * NOTE: this is not efficient for large datasets as it does not 
+ * invoke any indexes.
  * 
  * @param fromUser 
  * @param toUser 
  * @param callback 
  */
 function RetrieveAllToUser(fromUser, toUser, callback) {
+	var regexFromUser = new RegExp(fromUser, "i");
+	var regexToUser = new RegExp(toUser, "i");
 	modelMessage.find(
 			{
-				$and: [ { from: fromUser }, { to: toUser } ]
+				$and: [ { from: regexFromUser }, { to: regexToUser } ]
 			}).sort('-date').exec(callback);
 }
