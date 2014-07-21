@@ -87,4 +87,7 @@ Modified
 Modified    
     js/services/messagesService.js
 
+2014-07-20 - added required: true to date in schema.
+Modified    
+    server/models/db.js
 
